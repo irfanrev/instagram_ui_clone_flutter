@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/beranda.dart';
+import 'package:instagram_clone/explor.dart';
+import 'package:instagram_clone/profile.dart';
+import 'package:instagram_clone/reels.dart';
+import 'package:instagram_clone/shop.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,58 +14,76 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: BelajarNavBar());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: NavHome(),
+    );
   }
 }
 
-class BelajarNavBar extends StatefulWidget {
+class NavHome extends StatefulWidget {
+  const NavHome({Key? key}) : super(key: key);
+
   @override
-  _BelajarNavBarState createState() => _BelajarNavBarState();
+  _NavHomeState createState() => _NavHomeState();
 }
 
-class _BelajarNavBarState extends State<BelajarNavBar> {
-  int _selectedNavbar = 0;
+class _NavHomeState extends State<NavHome> {
+  int selectedIndex = 0;
 
-  void _changeSelectedNavBar(int index) {
+  final layoutPage = [
+    Beranda(),
+    Explor(),
+    Reels(),
+    Shop(),
+    Profile(),
+  ];
+
+  void onTapItem(int index) {
     setState(() {
-      _selectedNavbar = index;
+      selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("belajarFlutter.com"),
-      ),
-      body: Center(
-        child: Text("Tab Index yang aktif : $_selectedNavbar",
-            style: TextStyle(fontSize: 16)),
-      ),
+      body: layoutPage.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        selectedFontSize: 10.0,
+        unselectedFontSize: 10.0,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
+        showSelectedLabels: false,
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Beranda'),
+            icon: Icon(Icons.home_outlined),
+            label: '',
+            activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
-            title: Text('Pesanan'),
+            icon: Icon(Icons.search_outlined),
+            label: '',
+            activeIcon: Icon(Icons.search),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            title: Text('Inbox'),
+            icon: Icon(Icons.movie_outlined),
+            label: '',
+            activeIcon: Icon(Icons.movie),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Akun'),
+            icon: Icon(Icons.shop_outlined),
+            label: '',
+            activeIcon: Icon(Icons.shop),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: '',
+            activeIcon: Icon(Icons.person),
           ),
         ],
-        currentIndex: _selectedNavbar,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        onTap: _changeSelectedNavBar,
+        currentIndex: selectedIndex,
+        onTap: onTapItem,
       ),
     );
   }
