@@ -13,7 +13,7 @@ class Beranda extends StatelessWidget {
         elevation: 0.0,
         title: Text(
           'Instagram',
-          style: GoogleFonts.dancingScript(
+          style: GoogleFonts.pacifico(
             color: Colors.black,
           ),
         ),
@@ -42,78 +42,441 @@ class Beranda extends StatelessWidget {
           ),
           Story(),
           Divider(),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  width: MediaQuery.of(context).size.width,
-                  height: 55,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 55,
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Bre Kotok',
-                          ),
-                        ],
-                      ),
-                      Icon(Icons.more_vert_rounded),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  color: Colors.grey,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  height: 55,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.favorite_outline),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Icon(Icons.mode_comment_outlined),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Icon(Icons.send_outlined),
-                        ],
-                      ),
-                      Icon(Icons.archive_outlined),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          PostContent(),
         ],
       ),
+    );
+  }
+}
+
+//widget post konten
+class PostContent extends StatelessWidget {
+  const PostContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 55,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/post2.jpeg'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Bre Kotok',
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.more_vert_rounded),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/post2.jpeg'),
+                      fit: BoxFit.cover),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.favorite_outline,
+                          size: 32,
+                        ),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.mode_comment_outlined, size: 32),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.send_outlined, size: 32),
+                      ],
+                    ),
+                    Icon(Icons.archive_outlined, size: 32),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '100 suka',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                        'Bre Kotok Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 32,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey[100],
+                                image: DecorationImage(
+                                    image: AssetImage('assets/avatar.jpg'),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Tambahkan komentar...',
+                              style: TextStyle(color: Colors.grey),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          '1 jam yang lalu',
+                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                        )
+                      ],
+                    ),
+                    Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          ),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 55,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/avatar1.jpeg'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Json',
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.more_vert_rounded),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/post1.jpeg'),
+                      fit: BoxFit.cover),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.favorite_outline,
+                          size: 32,
+                        ),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.mode_comment_outlined, size: 32),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.send_outlined, size: 32),
+                      ],
+                    ),
+                    Icon(Icons.archive_outlined, size: 32),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '100 suka',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                        'Bre Kotok Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey[100],
+                            image: DecorationImage(
+                                image: AssetImage('assets/avatar.jpg'),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Tambahkan komentar...',
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          ),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 55,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/avatar4.jpeg'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Hack.j',
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.more_vert_rounded),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/post3.jpeg'),
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 55,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.favorite_outline,
+                          size: 32,
+                        ),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.mode_comment_outlined, size: 32),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Icon(Icons.send_outlined, size: 32),
+                      ],
+                    ),
+                    Icon(Icons.archive_outlined, size: 32),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '100 suka',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                        'Bre Kotok Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey[100],
+                            image: DecorationImage(
+                                image: AssetImage('assets/avatar.jpg'),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Tambahkan komentar...',
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -127,6 +490,7 @@ class Story extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 5),
       height: 100,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -147,6 +511,9 @@ class Story extends StatelessWidget {
                       color: Colors.deepOrange,
                       width: 3.0,
                     ),
+                    image: DecorationImage(
+                        image: AssetImage('assets/avatar.jpg'),
+                        fit: BoxFit.cover),
                   ),
                 ),
                 SizedBox(
@@ -172,12 +539,15 @@ class Story extends StatelessWidget {
                       color: Colors.deepOrange,
                       width: 3.0,
                     ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/avatar1.jpeg'),
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 5.0,
                 ),
-                Text('Asep')
+                Text('Michale')
               ],
             ),
           ),
@@ -196,6 +566,9 @@ class Story extends StatelessWidget {
                       style: BorderStyle.solid,
                       color: Colors.deepOrange,
                       width: 3.0,
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/avatar3.jpeg'),
                     ),
                   ),
                 ),
@@ -222,6 +595,9 @@ class Story extends StatelessWidget {
                       color: Colors.deepOrange,
                       width: 3.0,
                     ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/avatar2.jpeg'),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -247,6 +623,9 @@ class Story extends StatelessWidget {
                       color: Colors.deepOrange,
                       width: 3.0,
                     ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/avatar4.jpeg'),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -271,6 +650,9 @@ class Story extends StatelessWidget {
                       style: BorderStyle.solid,
                       color: Colors.deepOrange,
                       width: 3.0,
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/avatar3.jpeg'),
                     ),
                   ),
                 ),
